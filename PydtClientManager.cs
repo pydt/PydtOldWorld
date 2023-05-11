@@ -14,7 +14,7 @@ namespace PydtOldWorld
     {
         private bool forceSaveExit = false;
 
-        public PydtClientManager(ModSettings modSettings, Game gameClient, GameInterfaces gameInterfaces, IClientNetwork clientNetwork) : base(modSettings, gameClient, gameInterfaces, clientNetwork)
+        public PydtClientManager(GameInterfaces gameInterfaces) : base(gameInterfaces)
         {
         }
 
@@ -32,8 +32,8 @@ namespace PydtOldWorld
                 Player pActivePlayer = activePlayer();
                 if (pActivePlayer != null)
                 {
-                    Interfaces.UserInterface.SetUIAttribute("HotseatPopup-IsActive", true.ToStringCached());
-                    Interfaces.UserInterface.CreatePopup("Turn Complete", "Click OK To Save and Exit to Menu", new List<PopupOption>() { new PopupOption("OK") }, true,
+                    Interfaces.Application.UserInterface.SetUIAttribute("HotseatPopup-IsActive", true.ToStringCached());
+                    Interfaces.Application.UserInterface.CreatePopup("Turn Complete", "Click OK To Save and Exit to Menu", new List<PopupOption>() { new PopupOption("OK") }, true,
                         PopupOverlayType.DARK, -1, "POPUP_DEFAULT", (bool result) =>
                         {
                             App.SaveGame(new SaveParameters { path = $"{App.MPSavesFolder}/PYDT_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.zip" }, GameClient, (success) => App.ExitToMenu());

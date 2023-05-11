@@ -10,9 +10,9 @@ namespace PydtOldWorld
 {
     public class PydtGameFactory : GameFactory
     {
-        public override ClientManager CreateClientManager(ModSettings modSettings, Game gameClient, GameInterfaces gameInterfaces, IClientNetwork network)
+        public override ClientManager CreateClientManager(GameInterfaces gameInterfaces)
         {
-            return new PydtClientManager(modSettings, gameClient, gameInterfaces, network);
+            return new PydtClientManager(gameInterfaces);
         }
     }
 }
