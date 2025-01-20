@@ -36,7 +36,7 @@ namespace PydtOldWorld
                     Interfaces.Application.UserInterface.CreatePopup("Turn Complete", "Click OK To Save and Exit to Menu", new List<PopupOption>() { new PopupOption("OK") }, true,
                         PopupOverlayType.DARK, -1, "POPUP_DEFAULT", (bool result) =>
                         {
-                            App.SaveGame(new SaveParameters { path = $"{App.MPSavesFolder}/PYDT_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.zip" }, GameClient, (success) => App.ExitToMenu());
+                            App.SaveGame(new SaveParameters { path = $"{App.MPSavesFolder}/PYDT_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.zip" }, GameClient, GameClient.getCurrentTurnPlayer(), (success) => App.ExitToMenu());
                         });
                 }
             } else
